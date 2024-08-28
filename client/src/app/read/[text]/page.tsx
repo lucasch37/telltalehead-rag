@@ -77,7 +77,7 @@ const page = ({ params: { text } }: Props) => {
                     part.toLowerCase() === text.toLowerCase() ? (
                         <span
                             key={index}
-                            className="bg-gradient-to-r from-indigo-200 to-purple-200 dark:from-indigo-800 dark:to-purple-800 rounded-sm px-1 py-0.5 outline outline-1 outline-indigo-400"
+                            className="bg-gradient-to-r from-indigo-200 to-purple-200 dark:from-indigo-800 dark:to-purple-800 rounded-sm px-1 py-0.5 outline outline-1 outline-indigo-400 [box-decoration-break:clone]"
                             ref={scrollRef}
                         >
                             {part}

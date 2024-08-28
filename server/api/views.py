@@ -20,6 +20,10 @@ Answer the question based only on the following context:
 
 ---
 
+These are the past messages in the chat:
+
+{history}
+
 When writing your responses, first cite the sentence or sentences you are using as evidence, and make sure to wrap it in quotes.
 DO NOT WRAP ANYTHING IN QUOTES THAT IS NOT A DIRECT QUOTE FROM THE TEXT.
 DO NOT QUOTE ANYTHING INCORRECTLY IN THE TEXT.
@@ -30,6 +34,7 @@ Answer the question based on the above context: {question}
 class ChatBotView(APIView):
     def post(self, request):
         query = request.data.get('query', '')
+        history = request.data.get('history', '')
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
         knowledge = PineconeVectorStore.from_existing_index(
             index_name="telltaleheart",
@@ -40,7 +45,7 @@ class ChatBotView(APIView):
         def event_stream():
             stream = client.chat.completions.create(
                 model="gpt-4o-mini",
-                messages=[{"role": "system", "content": ChatPromptTemplate.from_template(PROMPT_TEMPLATE).format(context=context, question=query)}],
+                messages=[{"role": "system", "content": ChatPromptTemplate.from_template(PROMPT_TEMPLATE).format(context=context, question=query, history=history)}],
                 stream=True,
                 max_tokens=400,
                 temperature=0.0
@@ -48,7 +53,6 @@ class ChatBotView(APIView):
 
             for event in stream:
                 if event.choices[0].delta.content is not None:
-                    print(event.choices[0].delta.content, end="")
                     yield event.choices[0].delta.content
 
         return StreamingHttpResponse(event_stream(), content_type='text/event-stream')
