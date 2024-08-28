@@ -47,7 +47,7 @@ const page = (props: Props) => {
                 Read
             </div>
             <div className="font-light text-sm mt-2 text-gray-500 pb-4 border-b">
-                Explore the original text of The Tell-Tale Heart
+                Explore the original text of The Tell-Tale Heart.
             </div>
             <div className="whitespace-pre-line mb-4 text-sm leading-loose">
                 {text}

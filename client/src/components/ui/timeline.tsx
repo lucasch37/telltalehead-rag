@@ -43,7 +43,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 </h2>
                 <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-lg max-w-md font-light">
                     This is the story of one of the most famous short stories
-                    every written.
+                    ever written.
                 </p>
             </div>
 

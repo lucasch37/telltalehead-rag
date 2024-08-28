@@ -99,7 +99,7 @@ const Chat = (props: Props) => {
                                 "noopener,noreferrer"
                             );
                         }}
-                        className="bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-800 dark:to-purple-800 rounded px-0.5 py-0.5 cursor-pointer dark:outline outline-2 dark:outline-indigo-400 mx-1 whitespace-pre-wrap"
+                        className="[box-decoration-break:clone] bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-800 dark:to-purple-800 rounded px-0.5 py-0.5 cursor-pointer dark:outline outline-2 dark:outline-indigo-400 mx-1 whitespace-pre-wrap"
                     >
                         {part}
                     </span>
